@@ -19,3 +19,9 @@ export const validarLogin = [
 
     responderErrores,
 ];
+
+export const validarRecompesa = [
+    body("mision").trim().isLength({ min: 3, max: 80 }).withMessage("El nombre de la mision teiene que tener entre 3 y 80 caracteres "),
+    bosy("cristales").isInt({ min: 1, max: 100000 }).withMessage("Los cristales tienen que ser entero positivo entre 1 a 100000 "),
+    responderErrores,
+]
