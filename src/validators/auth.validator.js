@@ -1,5 +1,5 @@
 import { body, validationResult } from "express-validator";
-import passport from "passport";
+
 
 const responderErrores = (req, res, next) =>{
 
@@ -12,3 +12,10 @@ const responderErrores = (req, res, next) =>{
     }
     next();
 };
+
+export const validarLogin = [
+    body("username").trim().isLength({ min: 3, max: 30 }).withMessage("El usuario debe tener entre 3 y 30 caracteres "),
+    body("password").isLength({ min: 4, max: 60 }).withMessage("El password debe tener al menos 4 caracteres "),
+
+    responderErrores,
+];
