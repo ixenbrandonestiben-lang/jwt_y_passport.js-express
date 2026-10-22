@@ -42,3 +42,16 @@ export function autenticarJWT(req, res, next) {
         next();
     })(req, res, next);
 }
+
+export function autorizarAdmin (req, res, next){
+    if(!req.user?.admin){
+        return res.status(401).json({
+            error: "Prohibido (403): tu token en valido, pero necesite reclamacion admin: true para abrir la Bóveda Maestra",
+
+            rangoActual: req.user?.rango ?? "desconocido",
+        });
+    }
+
+    next();
+    
+}
